@@ -3,7 +3,7 @@ from eth_account import Account
 from utils.utils import *
 
 config = open_file("/Users/unaysangus/Desktop/Projects/Crypto Trading/DeFi/ZKSyncADBot/config.json")
-erc20_abi = open_file("/Users/unaysangus/Desktop/Projects/Crypto Trading/DeFi/ZKSyncADBot/ERC20.json")
+erc20_abi = open_file("/abi/ERC20.json")
 eth_rpc = config["eth_rpc_url"]
 
 
@@ -56,7 +56,7 @@ def create_zk_transaction(wallet_address, private_key):
     if not w3.is_connected():
         print("Not connected to Ethereum node.")
         exit(1)
-    zksync_abi = open_file("/Users/unaysangus/Desktop/Projects/Crypto Trading/DeFi/ZKSyncADBot/zksync.json")
+    zksync_abi = open_file("/abi/zksync.json")
     contract_address = w3.to_checksum_address("0x32400084C286CF3E17e7B677ea9583e60a000324")
 
     zksync_contract = w3.eth.contract(address=contract_address, abi=zksync_abi)
