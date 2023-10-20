@@ -2,8 +2,8 @@ from web3 import Web3
 from eth_account import Account
 from utils.utils import *
 
-config = open_file("/Users/unaysangus/Desktop/Projects/Crypto Trading/DeFi/ZKSyncADBot/config.json")
-erc20_abi = open_file("/Users/unaysangus/Desktop/Projects/Crypto Trading/DeFi/ZKSyncADBot/abi/ERC20.json")
+config = open_file("ZKSyncADBot/config.json")
+erc20_abi = open_file("ZKSyncADBot/abi/ERC20.json")
 eth_rpc = config["eth_rpc_url"]
 
 
@@ -63,7 +63,7 @@ def create_zk_transaction(wallet_address, private_key):
         print("Not connected to Ethereum node.")
         exit(1)
 
-    zksync_abi = open_file("/Users/unaysangus/Desktop/Projects/Crypto Trading/DeFi/ZKSyncADBot/abi/zksync.json")
+    zksync_abi = open_file("ZKSyncADBot/abi/zksync.json")
     contract_address = w3.to_checksum_address("0x32400084C286CF3E17e7B677ea9583e60a000324")
     zksync_contract = w3.eth.contract(address=contract_address, abi=zksync_abi)
 
@@ -107,5 +107,6 @@ def bridge_to_zk():
         wallet_address = w3.to_checksum_address(account.address)
         create_zk_transaction(wallet_address, pk)
 
-
-bridge_to_zk()
+# call which one you need
+#distribute_eth()
+#bridge_to_zk()
